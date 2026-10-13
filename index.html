@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <link rel="manifest" href="./manifest-presensi.json">
+    <meta name="theme-color" content="#000000">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="SmartApp Skarida">
+    <link rel="apple-touch-icon" sizes="180x180" href="/icon-180.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <title>SmartApp Skarida - SMKN 2 Tegalsari</title>
+    
+    <!-- Tailwind CSS & Lucide Icons -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+        
+        :root {
+            --glass-bg: rgba(255, 255, 255, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.3);
+            --aero-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+        }
+        
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: radial-gradient(circle at top left, #f0f4ff 0%, #ffffff 40%, #fdf2f8 100%);
+            background-attachment: fixed;
+            color: #1e293b;
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+            min-height: 100vh;
+        }
+        
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--aero-shadow);
+        }
+        
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .tap-scale { transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
+        .tap-scale:active { transform: scale(0.95); }
+        
+        .animate-in { animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="relative">
+
+    <!-- Background Ambient Blobs -->
+    <div class="fixed top-[-10%] left-[-10%] w-[40%] h-[40%] bg-indigo-500/10 rounded-full blur-[100px] -z-10 animate-pulse"></div>
+    <div class="fixed bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-pink-500/10 rounded-full blur-[100px] -z-10"></div>
+
+    <!-- Main Container -->
+    <main class="max-w-4xl mx-auto px-4 py-8 md:py-12 flex flex-col items-center">
+        
+        <!-- Header Section -->
+        <div class="text-center space-y-4 mb-10 animate-in">
+            <div class="w-24 h-24 flex items-center justify-center mx-auto animate-float">
+                <img src="https://lh3.googleusercontent.com/d/15zyF01OHtEgTl8p6bvEkz7xw30ByE2en" 
+                     alt="Logo SMKN 2 Tegalsari" 
+                     class="w-full h-full object-contain drop-shadow-2xl" 
+                     onerror="this.src='https://ui-avatars.com/api/?name=SMK+2&background=6366f1&color=fff&size=128'">
+            </div>
+            <div class="space-y-1">
+                <h1 class="text-3xl md:text-4xl font-black gradient-text tracking-tighter">SmartApp Skarida</h1>
+                <p class="text-slate-400 text-[11px] font-bold tracking-[0.2em] uppercase">Portal Terpadu SMKN 2 Tegalsari</p>
+            </div>
+        </div>
+
+        <!-- Apps Grid -->
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 w-full">
+            
+            <!-- 1. ADAB -->
+            <a href="https://adab.smkn2tegalsari.sch.id" class="glass-card tap-scale animate-in p-6 rounded-[2rem] flex flex-col items-center justify-center text-center gap-4 group hover:bg-white/90 transition-all duration-300 border border-white/40 relative overflow-hidden" style="animation-delay: 0.05s;">
+                <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-500 text-white flex items-center justify-center shadow-lg shadow-indigo-500/20 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 relative z-10">
+                    <i data-lucide="heart-handshake" class="w-8 h-8"></i>
+                </div>
+                <div class="relative z-10">
+                    <h3 class="font-black text-slate-800 text-sm tracking-tight">ADAB</h3>
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">Sistem Karakter</p>
+                </div>
+            </a>
+
+            <!-- 2. Epresensi Skarida -->
+            <a href="https://epresensi.smkn2tegalsari.sch.id" class="glass-card tap-scale animate-in p-6 rounded-[2rem] flex flex-col items-center justify-center text-center gap-4 group hover:bg-white/90 transition-all duration-300 border border-white/40 relative overflow-hidden" style="animation-delay: 0.1s;">
+                <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-teal-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-500 text-white flex items-center justify-center shadow-lg shadow-emerald-500/20 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 relative z-10">
+                    <i data-lucide="fingerprint" class="w-8 h-8"></i>
+                </div>
+                <div class="relative z-10">
+                    <h3 class="font-black text-slate-800 text-sm tracking-tight">Epresensi</h3>
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">Absensi Digital</p>
+                </div>
+            </a>
+
+            <!-- 3. Monitoring Epresensi -->
+            <a href="https://monitoring.smkn2tegalsari.sch.id" class="glass-card tap-scale animate-in p-6 rounded-[2rem] flex flex-col items-center justify-center text-center gap-4 group hover:bg-white/90 transition-all duration-300 border border-white/40 relative overflow-hidden" style="animation-delay: 0.15s;">
+                <div class="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-orange-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-amber-500 to-orange-500 text-white flex items-center justify-center shadow-lg shadow-amber-500/20 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 relative z-10">
+                    <i data-lucide="activity" class="w-8 h-8"></i>
+                </div>
+                <div class="relative z-10">
+                    <h3 class="font-black text-slate-800 text-sm tracking-tight">Monitoring</h3>
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">Pantau Presensi</p>
+                </div>
+            </a>
+
+            <!-- 4. Esarpras Skarida -->
+            <a href="https://esarpras.smkn2tegalsari.sch.id" class="glass-card tap-scale animate-in p-6 rounded-[2rem] flex flex-col items-center justify-center text-center gap-4 group hover:bg-white/90 transition-all duration-300 border border-white/40 relative overflow-hidden" style="animation-delay: 0.2s;">
+                <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 text-white flex items-center justify-center shadow-lg shadow-blue-500/20 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 relative z-10">
+                    <i data-lucide="package" class="w-8 h-8"></i>
+                </div>
+                <div class="relative z-10">
+                    <h3 class="font-black text-slate-800 text-sm tracking-tight">Esarpras</h3>
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">Sarana Prasarana</p>
+                </div>
+            </a>
+
+            <!-- 5. Induk Skarida -->
+            <a href="https://induk.smkn2tegalsari.sch.id" class="glass-card tap-scale animate-in p-6 rounded-[2rem] flex flex-col items-center justify-center text-center gap-4 group hover:bg-white/90 transition-all duration-300 border border-white/40 relative overflow-hidden" style="animation-delay: 0.25s;">
+                <div class="absolute inset-0 bg-gradient-to-br from-rose-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-rose-500 to-pink-500 text-white flex items-center justify-center shadow-lg shadow-rose-500/20 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 relative z-10">
+                    <i data-lucide="database" class="w-8 h-8"></i>
+                </div>
+                <div class="relative z-10">
+                    <h3 class="font-black text-slate-800 text-sm tracking-tight">Induk</h3>
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">Data Induk Siswa</p>
+                </div>
+            </a>
+
+            <!-- 6. Evoting Skarida -->
+            <a href="https://evoting.smkn2tegalsari.sch.id" class="glass-card tap-scale animate-in p-6 rounded-[2rem] flex flex-col items-center justify-center text-center gap-4 group hover:bg-white/90 transition-all duration-300 border border-white/40 relative overflow-hidden" style="animation-delay: 0.3s;">
+                <div class="absolute inset-0 bg-gradient-to-br from-violet-500/5 to-fuchsia-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-violet-500 to-fuchsia-500 text-white flex items-center justify-center shadow-lg shadow-violet-500/20 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 relative z-10">
+                    <i data-lucide="check-square" class="w-8 h-8"></i>
+                </div>
+                <div class="relative z-10">
+                    <h3 class="font-black text-slate-800 text-sm tracking-tight">Evoting</h3>
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">Pemilihan Digital</p>
+                </div>
+            </a>
+
+            <!-- 7. Lulus Skarida -->
+            <a href="https://kelulusan.smkn2tegalsari.sch.id" class="glass-card tap-scale animate-in p-6 rounded-[2rem] flex flex-col items-center justify-center text-center gap-4 group hover:bg-white/90 transition-all duration-300 border border-white/40 relative overflow-hidden" style="animation-delay: 0.35s;">
+                <div class="absolute inset-0 bg-gradient-to-br from-yellow-500/5 to-amber-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-yellow-500 to-amber-500 text-white flex items-center justify-center shadow-lg shadow-yellow-500/20 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 relative z-10">
+                    <i data-lucide="award" class="w-8 h-8"></i>
+                </div>
+                <div class="relative z-10">
+                    <h3 class="font-black text-slate-800 text-sm tracking-tight">Lulus</h3>
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">Cek Kelulusan</p>
+                </div>
+            </a>
+
+            <!-- 8. Info Skarida -->
+            <a href="https://humas.smkn2tegalsari.sch.id" class="glass-card tap-scale animate-in p-6 rounded-[2rem] flex flex-col items-center justify-center text-center gap-4 group hover:bg-white/90 transition-all duration-300 border border-white/40 relative overflow-hidden" style="animation-delay: 0.4s;">
+                <div class="absolute inset-0 bg-gradient-to-br from-slate-500/5 to-slate-700/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-slate-600 to-slate-800 text-white flex items-center justify-center shadow-lg shadow-slate-500/20 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 relative z-10">
+                    <i data-lucide="megaphone" class="w-8 h-8"></i>
+                </div>
+                <div class="relative z-10">
+                    <h3 class="font-black text-slate-800 text-sm tracking-tight">Info Skarida</h3>
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">Pusat Informasi</p>
+                </div>
+            </a>
+
+            <!-- 9. Official Skarida -->
+            <a href="https://smkn2tegalsari.sch.id" class="glass-card tap-scale animate-in p-6 rounded-[2rem] flex flex-col items-center justify-center text-center gap-4 group hover:bg-white/90 transition-all duration-300 border border-white/40 relative overflow-hidden md:col-span-3 lg:col-span-1" style="animation-delay: 0.45s;">
+                <div class="absolute inset-0 bg-gradient-to-br from-indigo-600/5 to-blue-700/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-600 to-blue-700 text-white flex items-center justify-center shadow-lg shadow-indigo-600/20 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 relative z-10">
+                    <i data-lucide="globe" class="w-8 h-8"></i>
+                </div>
+                <div class="relative z-10">
+                    <h3 class="font-black text-slate-800 text-sm tracking-tight">Official</h3>
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">Website Resmi</p>
+                </div>
+            </a>
+
+        </div>
+
+        <!-- Footer -->
+        <footer class="mt-12 mb-6 text-center animate-in" style="animation-delay: 0.6s;">
+            <p class="text-[9px] font-bold text-slate-400 uppercase tracking-[0.2em] opacity-60">© 2026 Dikembangkan oleh Humas SMKN 2 Tegalsari</p>
+        </footer>
+
+    </main>
+
+    <!-- Initialize Icons -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
